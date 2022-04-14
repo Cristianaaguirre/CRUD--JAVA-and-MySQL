@@ -47,7 +47,7 @@ public class MenuService {
             listarNombrePrecio();
             break;
           case 3:
-
+            listarRangoProducto();
             break;
           case 4:
             listarPortatil();
@@ -62,6 +62,7 @@ public class MenuService {
             nuevoFabricante();
             break;
           case 8:
+            editarProducto();
             break;
           case 9:
             close = true;
@@ -79,6 +80,7 @@ public class MenuService {
     } while (close != true);
   }
 
+  //METODOS
   //Listar el nombre de todos los productos
   public void listaDeNombres() throws ClassNotFoundException, SQLException, MiException {
     try {
@@ -106,6 +108,20 @@ public class MenuService {
     }
   }
 
+  //Listar productos entre los precios 120 y 202
+  public void listarRangoProducto() throws ClassNotFoundException, SQLException, MiException {
+    try {
+      ArrayList<Producto> lista = pServ.listar();
+      if (lista.isEmpty()) {
+        throw new MiException("LISTA VACIA");
+      }
+      lista.removeIf(prdct -> prdct.getPrecio() < 120 || prdct.getPrecio() > 202);
+      System.out.println(lista);
+    } catch (ClassNotFoundException | SQLException | MiException e) {
+      throw e;
+    }
+  }
+
   //Listar los elementos que sean portatiles
   public void listarPortatil() throws Exception {
     try {
@@ -120,6 +136,7 @@ public class MenuService {
     }
   }
 
+  //Traer el producto mas barato
   public void productoBarato() throws ClassNotFoundException, SQLException, MiException {
     try {
       List list = pServ.listar();
@@ -133,8 +150,8 @@ public class MenuService {
       throw e;
     }
   }
-  
-    //Ingresar un Producto a la DB
+
+  //Ingresar un Producto a la DB
   private void ingresarProducto() throws SQLException, MiException, Exception {
     System.out.println("Ingrese un nuevo Producto");
     try {
@@ -174,6 +191,33 @@ public class MenuService {
     }
   }
 
+  //Editar un producto 
+  private void editarProducto() throws ClassNotFoundException, SQLException, MiException {
+    try {
+      //Solicitamos datos a cambiar
+      System.out.println("Vamos a modificar un producto");
+      System.out.println(pServ.listar());
+      System.out.println("Ingrese los datos");
+      System.out.print("Codigo: ");
+      Integer codigo = sc.nextInt();
+      System.out.print("Nombre: ");
+      String nombre = sc.next();
+      System.out.print("precio: ");
+      Double precio = sc.nextDouble();
+      System.out.print("codigo_fab: ");
+      Integer cod_fab = sc.nextInt();
+      // Validamos los datos
+      if(codigo < 0 || precio < 0 || cod_fab < 0) throw new MiException("ERROR EN EL CODIGO, EL PRECIO O EL CODIGO DE FABRICANTE");
+      if(nombre.trim().isEmpty()) throw new MiException("ERROR EN EL NOMBRE");
+      //Enviamos un objeto a cambiar
+      pServ.editarUnProducto(codigo, nombre, precio, cod_fab);
+    } catch (ClassNotFoundException | SQLException | MiException e) {
+      throw e;
+    }
+
+
+
+  }
   //Comparator
   public static Comparator<Producto> compararPrecio = (Producto p1, Producto p2) -> p1.getPrecio().compareTo(p2.getPrecio());
 }

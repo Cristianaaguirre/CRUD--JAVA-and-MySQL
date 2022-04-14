@@ -4,14 +4,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import tienda.entidades.Fabricante;
 import tienda.entidades.Producto;
+import tienda.persistencia.FabricanteDAO;
 import tienda.persistencia.ProductoDAO;
 
 public class ProductoService {
   
   private final ProductoDAO pDAO;
+  private final FabricanteDAO fDAO;
   
   public ProductoService() {
     this.pDAO = new ProductoDAO();
+    this.fDAO = new FabricanteDAO();
   }
   
   public void crearProducto(String nombre, Double precio, Fabricante f) throws Exception {
@@ -28,6 +31,22 @@ public class ProductoService {
       pDAO.guardarProducto(aux);
     } catch (MiException e) {
       System.out.println(e.getMessage());
+      throw e;
+    }
+  }
+  
+  public void editarUnProducto(Integer codigo, String nombre, Double precio, Integer cod_fab) throws MiException, ClassNotFoundException, SQLException {
+    try {
+      if(nombre.trim().isEmpty()) throw new MiException("CADENA VACIA");
+      if(precio == null || precio < 0) throw new MiException("PRECIO ERRONEO");
+      if(cod_fab == null || cod_fab < 0) throw new MiException("PRECIO ERRONEO");
+      
+      Producto aux = pDAO.buscarPorCodigo(codigo);
+      aux.setNombre(nombre);
+      aux.setPrecio(precio);
+      aux.setFabricante(fDAO.buscarFabricantePorCodigo(cod_fab));
+      pDAO.modificarProducto(aux);
+    } catch (ClassNotFoundException | SQLException | MiException e) {
       throw e;
     }
   }

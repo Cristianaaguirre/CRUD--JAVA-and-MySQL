@@ -23,13 +23,17 @@ public class ProductoDAO extends DAO {
     }
   }
 
-  public void modificarProducto(Producto aux) throws MiException {
+  public void modificarProducto(Producto aux) throws MiException, ClassNotFoundException, SQLException {
     try {
       if (aux == null) {
         throw new MiException("No ha ingresado un usuario");
       }
+      String query = "UPDATE producto SET nombre = '" + aux.getNombre()
+              + "', precio = '" + aux.getPrecio()
+              + "', codigo_fabricante = '" + aux.getFabricante().getCodigo()
+              + "' WHERE codigo =" + aux.getCodigo() + ";";
 
-      String query = "UPDATE ";
+      modificarDB(query);
     } catch (MiException e) {
       System.out.println(e.getMessage());
       throw new MiException("ERROR AL MODIFICAR");
