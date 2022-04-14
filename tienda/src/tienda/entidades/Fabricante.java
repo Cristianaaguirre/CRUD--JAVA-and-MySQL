@@ -1,4 +1,4 @@
-package tiendal.entidades;
+package tienda.entidades;
 
 public class Fabricante {
   
@@ -29,12 +29,8 @@ public class Fabricante {
     this.nombre = nombre;
   }
 
-
-
-  @Override
+@Override
   public String toString() {
     return "Fabricante{" + "codigo=" + codigo + ", nombre=" + nombre + '}';
   }
-  
-  
 }

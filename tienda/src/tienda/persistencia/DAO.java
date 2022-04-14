@@ -17,7 +17,7 @@ public abstract class DAO {
   protected void contectarDB() throws SQLException, ClassNotFoundException {
     try {
       Class.forName("com.mysql.jdbc.Driver");
-      conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/tienda?userSSL=false", "root", "as424543454");
+      conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/tienda?useSSL=false", "root", "as424543454");
     } catch (ClassNotFoundException | SQLException e) {
       throw e;
     }

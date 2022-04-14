@@ -1,11 +1,11 @@
-package tiendal.entidades;
+package tienda.entidades;
 
 public class Producto {
   
   private Integer codigo;
   private String nombre;
   private Double precio;
-  private Fabricante cod_fab;
+  private Fabricante fabricante;
 
   public Producto() {
   }
@@ -14,7 +14,7 @@ public class Producto {
     this.codigo = codigo;
     this.nombre = nombre;
     this.precio = precio;
-    this.cod_fab = new Fabricante();
+    this.fabricante = new Fabricante();
   }
 
   public Integer getCodigo() {
@@ -41,13 +41,17 @@ public class Producto {
     this.precio = precio;
   }
 
-  public Fabricante getCod_fab() {
-    return cod_fab;
+  public Fabricante getFabricante() {
+    return fabricante;
   }
 
-  public void setCod_fab(Fabricante cod_fab) {
-    this.cod_fab = cod_fab;
+  public void setFabricante(Fabricante fabricante) {
+    this.fabricante = fabricante;
+  } 
+
+  @Override
+  public String toString() {
+    return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", precio=" + precio + ", fabricante=" + fabricante.getCodigo() + '}' + "\n";
   }
-  
   
 }

@@ -2,7 +2,7 @@ package tienda.persistencia;
 
 import java.sql.SQLException;
 import tienda.servicio.MiException;
-import tiendal.entidades.Fabricante;
+import tienda.entidades.Fabricante;
 
 public class FabricanteDAO extends DAO {
 
