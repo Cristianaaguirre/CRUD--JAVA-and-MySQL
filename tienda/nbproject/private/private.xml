@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/tienda/servicio/ProductoService.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>47</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/PC-755/Desktop/JDBC-MySQL/tienda/src/tienda/Main.java</file>
             <file>file:/C:/Users/PC-755/Desktop/JDBC-MySQL/tienda/src/tienda/persistencia/ProductoDAO.java</file>
-            <file>file:/C:/Users/PC-755/Desktop/JDBC-MySQL/tienda/src/tienda/persistencia/DAO.java</file>
             <file>file:/C:/Users/PC-755/Desktop/JDBC-MySQL/tienda/src/tienda/entidades/Producto.java</file>
+            <file>file:/C:/Users/PC-755/Desktop/JDBC-MySQL/tienda/src/tienda/persistencia/FabricanteDAO.java</file>
             <file>file:/C:/Users/PC-755/Desktop/JDBC-MySQL/tienda/src/tienda/servicio/ProductoService.java</file>
             <file>file:/C:/Users/PC-755/Desktop/JDBC-MySQL/tienda/src/tienda/servicio/MenuService.java</file>
         </group>
